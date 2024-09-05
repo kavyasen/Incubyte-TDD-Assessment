@@ -79,3 +79,20 @@ int add(string numbers) {
 
     return process_numbers(processed_numbers, ",");
 }
+int main() {
+    try {
+        cout << add("") << endl;            // Output: 0
+        cout << add("1") << endl;           // Output: 1
+        cout << add("1,5") << endl;         // Output: 6
+        cout << add("1\n2,3") << endl;      // Output: 6
+        cout << add("//;\n1;2") << endl;    // Output: 3
+        cout << add("//|\n1|2|3") << endl; // Output: 6
+
+        // This will throw an exception
+        cout << add("//;\n1;-2;3;-4") << endl;
+    } catch (const runtime_error& e) {
+        cerr << e.what() << endl; // Output: negative numbers not allowed -2,-4
+    }
+
+    return 0;
+}
